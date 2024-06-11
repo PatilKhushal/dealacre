@@ -6,7 +6,6 @@ import dynamic from 'next/dynamic';
 
 const Header = dynamic(() => import('../Header/Header'), { ssr: false });
 const Display = dynamic(() => import('../Display/Display'), { ssr: false });
-const Loader = dynamic(() => import('../Loader/Loader'), { ssr: false });
 
 
 function Base({initialData}) {
@@ -27,7 +26,7 @@ function Base({initialData}) {
       <Header/>
       {
         // displaying data only when it's actually present else showing skeleton loader
-        data?.users?.length > 0 ? <Display/> : <Loader/>
+        data.users && <Display/>
       }
     </div>
   )
